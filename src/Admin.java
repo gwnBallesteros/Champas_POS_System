@@ -14,14 +14,18 @@ public class Admin
 
         do
         {
-            System.out.println("\n======================================================");
-            System.out.println("1. Insert the Record");
-            System.out.println("2. Display the Records");
-            System.out.println("3. Update the Records");
-            System.out.println("4. Delete the Record");
-            System.out.println("5. Exit\n");
 
-            System.out.print("Enter your choice: ");
+            System.out.println("==============================================================================");
+            System.out.println("                                    MENU                                      ");
+            System.out.println("------------------------------------------------------------------------------");
+            System.out.println("                          [1] Insert Data");
+            System.out.println("                          [2] Display the Datas");
+            System.out.println("                          [3] Update the Data");
+            System.out.println("                          [4] Delete the Data");
+            System.out.println("                          [5] Logout");
+            System.out.println("==============================================================================");
+
+            System.out.print("    Enter your choice: ");
             ch = sc.nextInt();
             sc.nextLine();
 
@@ -46,7 +50,7 @@ public class Admin
                     break;
 
                 case 5:
-                    System.out.println("Thank you for visiting us!");
+                    Login.logout();
                     break;
 
                 default:
@@ -61,19 +65,21 @@ public class Admin
     public static void insertData()
     {
         Menu item = new Menu();
-
-        int itemCode = Console.getInt("Enter the item code: ");
+        System.out.println("==============================================================================");
+        System.out.println("                               INSERT DATA                                    ");
+        System.out.println("------------------------------------------------------------------------------");
+        int itemCode = Console.getInt("    Enter the item code: ");
         item.setMenu_code(itemCode);
 
-        System.out.print("Enter the item name: ");
+        System.out.print("    Enter the item name: ");
         String itemName = sc.nextLine();
         item.setMenu_item(itemName);
 
-        System.out.print("Enter the item status: ");
+        System.out.print("    Enter the item status: ");
         String itemStatus = sc.nextLine();
         item.setMenu_status(itemStatus);
 
-        double itemPrice = Console.getDouble("Enter the item price: ");
+        double itemPrice = Console.getDouble("    Enter the item price: ");
         item.setMenu_price(itemPrice);
 
         try
@@ -101,6 +107,7 @@ public class Admin
         {
             e.printStackTrace();
         }
+        System.out.println("==============================================================================");
     }
 
     //Deletion of Data from the Database Table
@@ -111,7 +118,10 @@ public class Admin
             Connection con = DBConnect.getConnect();
             Menu item = new Menu();
 
-            int code = Console.getInt("Enter the record number to delete: ");
+            System.out.println("==============================================================================");
+            System.out.println("                               DELETE DATA                                    ");
+            System.out.println("------------------------------------------------------------------------------");
+            int code = Console.getInt("    Enter the record number to delete: ");
             item.setMenu_code(code);
 
             String sql = "DELETE FROM champas_menu WHERE code=? ";
@@ -130,12 +140,12 @@ public class Admin
             {
                 System.out.println("Record Not Found!");
             }
-
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
+        System.out.println("==============================================================================");
     }
 
     //Update Data from the Database Table
@@ -143,19 +153,22 @@ public class Admin
     {
         Menu item = new Menu();
 
-        System.out.print("Enter the code: ");
+        System.out.println("==============================================================================");
+        System.out.println("                               UPDATE DATA                                    ");
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.print("    Enter the code: ");
         int itemCode = sc.nextInt();
         item.setMenu_code(itemCode);
 
-        System.out.print("Enter the item name: ");
+        System.out.print("    Enter the item name: ");
         String itemName = sc.nextLine();
         item.setMenu_item(itemName);
 
-        System.out.print("Enter the item status: ");
+        System.out.print("    Enter the item status: ");
         String itemStatus = sc.nextLine();
         item.setMenu_status(itemStatus);
 
-        System.out.print("Enter the item price: ");
+        System.out.print("    Enter the item price: ");
         double itemPrice = sc.nextDouble();
         item.setMenu_price(itemPrice);
 
@@ -188,6 +201,7 @@ public class Admin
         {
             e.printStackTrace();
         }
+        System.out.println("==============================================================================");
     }
 
     //Display the Datas from the Database Table

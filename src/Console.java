@@ -24,7 +24,7 @@ public class Console
             }
             else
             {
-                System.out.print("Error! Invalid Integer. Try Again.\n");
+                System.out.println("                       ERROR! Invalid Input. Try again.\n");
             }
 
             sc.nextLine();
@@ -41,11 +41,11 @@ public class Console
             i = getInt(prompt);
             if(i < min)
             {
-                System.out.println("Error! Select 1 and 2 only\n");
+                System.out.println("                       ERROR! Invalid Input. Try again.\n");
             }
             else if (i > max)
             {
-                System.out.print("Error! Select 1 and 2 only\n");
+                System.out.println("                       ERROR! Invalid Input. Try again.\n");
             }
             else
                 isValid = true;
@@ -67,7 +67,7 @@ public class Console
             }
             else
             {
-                System.out.print("Error! Invalid Integer. Try Again.");
+                System.out.println("                       ERROR! Invalid Input. Try again.\n");
             }
 
             sc.nextLine();

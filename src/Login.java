@@ -10,12 +10,31 @@ public class Login
 {
     public static void Login()
     {
-        splash();
+        System.out.println("==============================================================================");
         System.out.println("                                    LOG-IN                                    ");
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                                  [1] ADMIN                                   ");
         System.out.println("                                  [2] CASHIER                                 ");
         System.out.println("------------------------------------------------------------------------------");
+    }
+
+    public static void loginAlert()
+    {
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("|                           LOGIN SUCCESSFULLY!                              |");
+        System.out.println("------------------------------------------------------------------------------");
+    }
+    public static void logout()
+    {
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("|                          LOGOUT SUCCESSFULLY!                              |");
+        System.out.println("------------------------------------------------------------------------------");
+    }
+    public static void footer()
+    {
+        System.out.println("==============================================================================");
+        System.out.println("|                      CHAMPAS MEXICAN GRILL POS SYSTEM                      |");
+        System.out.println("==============================================================================");
     }
 
     public static void splash()

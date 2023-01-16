@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 
 public class MenuDB
 {
-    public static Menu getMenu(String menu_code)
+    public static Menu getMenu(int menu_code)
     {
         Menu m = new Menu();
 

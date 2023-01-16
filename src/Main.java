@@ -8,27 +8,45 @@ public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException
     {
         //LOGIN
-        Login.Login();
-        int acctType = Console.getInt("    Choose Account: ",1,2);
+        Login.splash();
+        String login;
+        do
+        {
+            //String logIn;
+            Login.Login();
+            int acctType = Console.getInt("    Choose Account: ",1,2);
 
-        switch (acctType) {
-            case 1 -> {
-                Login.PasswordAdmin();
-                Admin.MenuManager();
+            switch (acctType) {
+                case 1 -> {
+                    Login.PasswordAdmin();
+                    Login.loginAlert();
+                    Admin.MenuManager();
+                }
+                case 2 -> {
+                    String choice = "";
+                    String transChoice;
+                    Login.PasswordCashier();
+                    Login.loginAlert();
+                    do{
+                        Invoice invoice = new Invoice();
+                        do
+                        {
+                            Cashier.getLineItems(invoice);
+                            Cashier.totalOrders(invoice);
+                            System.out.print("    Add more: (y/n) ");
+                            choice = sc.next();
+                        } while(choice.equalsIgnoreCase("Y"));
+                        Cashier.paymentInput(invoice);
+
+                        System.out.print("    Another transaction: (y/n) ");
+                        transChoice = sc.next();
+                    } while(transChoice.equalsIgnoreCase("Y"));
+                    Login.logout();
+                }
             }
-            case 2 -> {
-                String choice = "";
-                Login.PasswordCashier();
-                Invoice invoice = new Invoice();
-                do
-                {
-                    Cashier.getLineItems(invoice);
-                    Cashier.totalOrders(invoice);
-                    System.out.print("    Add more: (y/n) ");
-                    choice = sc.next();
-                } while(choice.equalsIgnoreCase("Y"));
-                Cashier.paymentInput(invoice);
-            }
-        }
+            System.out.print("    Login Again: (y/n) ");
+            login = sc.next();
+        } while(login.equalsIgnoreCase("Y"));
+        Login.footer();
     }
 }

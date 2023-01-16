@@ -45,37 +45,42 @@ public class Cashier
         System.out.println("==============================================================================");
     }
 
+    private static void discount(Invoice invoice)
+    {
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("                                Discount Type                                 ");
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("                               [1] PWD                                        ");
+        System.out.println("                               [2] Senior Citizen                             ");
+        System.out.println("------------------------------------------------------------------------------");
+        int discountType = Console.getInt("    Enter discount type: ",1, 2);
+        switch(discountType)
+        {
+            case 1:
+                totalAmount = invoice.getTotal() - (0.20 * invoice.getTotal());
+                System.out.println("                        PWD Discount applied! ");
+                break;
+            case 2:
+                totalAmount = invoice.getTotal() - (0.25 * invoice.getTotal());
+                System.out.println("                      Senior Citizen Discount applied! ");
+                break;
+        }
+    }
+
     public static void paymentInput(Invoice invoice)
     {
-
+        int press;
         System.out.println("==============================================================================");
         System.out.println("                                  DISCOUNT                                    ");
-        System.out.println("------------------------------------------------------------------------------");
-        System.out.print("    Discount (if applicable): ");
-        String discount = sc.nextLine();
+        System.out.println("==============================================================================");
+        press = Console.getInt("    Discount: (PRESS 1: YES / PRESS 2: NO)");
 
-        if(discount.equalsIgnoreCase("Y"))
+        switch(press)
         {
-            System.out.println("------------------------------------------------------------------------------");
-            System.out.println("                                Discount Type                                 ");
-            System.out.println("------------------------------------------------------------------------------");
-            System.out.println("                               [1] PWD                                        ");
-            System.out.println("                               [2] Senior Citizen                             ");
-            System.out.println("------------------------------------------------------------------------------");
-            System.out.print("    Enter discount type: ");
-            int discountType = sc.nextInt();
-            switch(discountType)
-            {
-                case 1:
-                    totalAmount = invoice.getTotal() - (0.20 * invoice.getTotal());
-                    System.out.println("                        PWD Discount applied! ");
-                    break;
-                case 2:
-                    totalAmount = invoice.getTotal() - (0.25 * invoice.getTotal());
-                    System.out.println("                      Senior Citizen Discount applied! ");
-                    break;
-            }
+            case 1:
 
+                Cashier.discount(invoice);
+                break;
         }
 
         System.out.println("==============================================================================");
@@ -95,14 +100,15 @@ public class Cashier
         System.out.println("                               [1] CASH                                       ");
         System.out.println("                               [2] CREDIT/DEBIT CARD                          ");
         System.out.println("------------------------------------------------------------------------------");
-        int mop = Console.getInt("    Enter MOP: ");
+        int mop = Console.getInt("    Enter MOP: ",1,2);
 
         switch(mop) {
             case 1:
                 System.out.println("------------------------------------------------------------------------------");
                 do {
-                    System.out.print("    Enter cash: ");
-                    cash = sc.nextDouble();
+                    cash = Console.getDouble("    Enter cash: ");
+//                    System.out.print("    Enter cash: ");
+//                    cash = sc.nextDouble();
                     change = cash - totalAmount;
                 } while(cash < totalAmount);
                 System.out.println("------------------------------------------------------------------------------");
@@ -117,7 +123,7 @@ public class Cashier
                 {
                     Cashier.displayInvoiceCash(invoice);
                 }
-
+                System.out.println("------------------------------------------------------------------------------");
                 break;
 
             case 2:
@@ -139,13 +145,11 @@ public class Cashier
                 System.out.println("------------------------------------------------------------------------------");
                 System.out.println("    Total Amount: " + totalAmount);
                 String printCC = Console.getString("    Print the receipt: (y/n) ");
-//                System.out.print("    Print the receipt: ");
-//                String printCC = sc.next();
-
                 if(printCC.equalsIgnoreCase("Y"))
                 {
                     Cashier.displayInvoiceCC(invoice);
                 }
+                System.out.println("------------------------------------------------------------------------------");
                 break;
         }
     }
@@ -159,7 +163,7 @@ public class Cashier
         {
             System.out.println("                                    ORDERS                                    ");
             System.out.println("------------------------------------------------------------------------------");
-            String menuCode = Console.getString("    Enter product code: ");
+            int menuCode = Console.getInt("    Enter product code: ");
             int quantity = Console.getInt("    Enter quantity: ");
 
             Menu menu = MenuDB.getMenu(menuCode);
