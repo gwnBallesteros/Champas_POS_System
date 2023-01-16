@@ -41,12 +41,15 @@ public class LineItem
     public double getTotal()
     {
         double total = menu.getMenu_price() * quantity;
+        total = (Math.round(total * 100.0)/100.0);
         return total;
     }
 
     public String getTotalFormatted()
     {
-        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
-        return currency.format(this.getTotal());
+        String s = "Php " + getTotal();
+//        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
+//        return currency.format(this.getTotal());
+        return s;
     }
 }

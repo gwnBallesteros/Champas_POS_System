@@ -4,15 +4,15 @@ import java.util.Locale;
 public class Menu
 {
     private int menu_id;
-    private String menu_code;
     private String menu_item;
+    private String menu_status;
     private double menu_price;
 
     public Menu()
     {
         this.menu_id = 0;
-        this.menu_code = "";
         this.menu_item = "";
+        this.menu_status = "";
         this.menu_price = 0.0;
     }
     public int getMenu_id() {
@@ -23,12 +23,12 @@ public class Menu
         this.menu_id = menu_id;
     }
 
-    public String getMenu_code() {
-        return menu_code;
+    public String getMenu_status() {
+        return menu_status;
     }
 
-    public void setMenu_code(String menu_code) {
-        this.menu_code = menu_code;
+    public void setMenu_status(String menu_status) {
+        this.menu_status = menu_status;
     }
 
     public String getMenu_item() {

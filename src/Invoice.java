@@ -1,3 +1,4 @@
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,10 +26,12 @@ public class Invoice extends Cashier
     public double getTotal()
     {
         double invoiceTotal = 0;
+
         for(LineItem lineItem : lineItems)
         {
             invoiceTotal += lineItem.getTotal();
         }
+        invoiceTotal = (Math.round(invoiceTotal * 100.0)/100.0);
 
         return invoiceTotal;
     }
@@ -46,7 +49,9 @@ public class Invoice extends Cashier
 
     public String getTotalFormatted()
     {
-        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
-        return currency.format(getTotal());
+        String s = "Php " + getTotal();
+//        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
+//        return currency.format(getTotal());
+        return s;
     }
 }

@@ -3,13 +3,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-public class Menu_manager
+public class Admin
 {
     public static Scanner sc = new Scanner(System.in);
 
     public static void MenuManager()
     {
-        Menu_manager di = new Menu_manager();
+        Admin di = new Admin();
         int ch;
 
         do
@@ -62,13 +62,13 @@ public class Menu_manager
     {
         Menu item = new Menu();
 
-        System.out.print("Enter the item code: ");
-        String itemCode = sc.nextLine();
-        item.setMenu_code(itemCode);
-
         System.out.print("Enter the item name: ");
         String itemName = sc.nextLine();
         item.setMenu_item(itemName);
+
+        System.out.print("Enter the item status: ");
+        String itemStatus = sc.nextLine();
+        item.setMenu_status(itemStatus);
 
         double itemPrice = Console.getDouble("Enter the item price: ");
         item.setMenu_price(itemPrice);
@@ -77,10 +77,10 @@ public class Menu_manager
         {
             Connection con = DBConnect.getConnect();
 
-            String sql = "INSERT into champas.champas_menu(code, menu_item, food_price) VALUES(?,?,?)";
+            String sql = "INSERT into champas.champas_menu(menu_item, status, food_price) VALUES(?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
 
-            pst.setString(1, item.getMenu_code());
+            pst.setString(1, item.getMenu_status());
             pst.setString(2, item.getMenu_item());
             pst.setDouble(3, item.getMenu_price());
 
@@ -143,13 +143,13 @@ public class Menu_manager
         int itemId = sc.nextInt();
         item.setMenu_id(itemId);
 
-        System.out.print("Enter the item code: ");
-        String itemCode = sc.nextLine();
-        item.setMenu_code(itemCode);
-
         System.out.print("Enter the item name: ");
         String itemName = sc.nextLine();
         item.setMenu_item(itemName);
+
+        System.out.print("Enter the item status: ");
+        String itemStatus = sc.nextLine();
+        item.setMenu_status(itemStatus);
 
         System.out.print("Enter the item price: ");
         double itemPrice = sc.nextDouble();
@@ -158,10 +158,10 @@ public class Menu_manager
         try
         {
             Connection con = DBConnect.getConnect();
-            String str = "UPDATE champas.champas_menu SET code=?, menu_item=?, food_price=? WHERE id=?";
+            String str = "UPDATE champas.champas_menu SET menu_item=?, status=?, food_price=? WHERE id=?";
             PreparedStatement pst = con.prepareStatement(str);
 
-            pst.setString(1, item.getMenu_code());
+            pst.setString(1, item.getMenu_status());
             pst.setString(2, item.getMenu_item());
             pst.setDouble(3, item.getMenu_price());
             pst.setInt(4, item.getMenu_id());

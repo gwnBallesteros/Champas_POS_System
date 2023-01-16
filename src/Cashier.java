@@ -1,3 +1,5 @@
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Cashier
@@ -5,8 +7,9 @@ public class Cashier
     public static Scanner sc = new Scanner(System.in);
     private static double amount = 0.0;
     private static int quantity = 0;
-
     private static double totalAmount = 0;
+    private static double change = 0.0;
+    private static double cash = 0.0;
 
     public static void paymentInput(Invoice invoice)
     {
@@ -30,8 +33,9 @@ public class Cashier
         System.out.println("\n\t\t\t\t\tInvoice Total: \t" + invoice.getTotalFormatted()+"\n");
         totalAmount = invoice.getTotal();
         quantity = (int) invoice.getTotalQuantity();
-        //System.out.println("Amount:   " + amount );
+//        System.out.println("Amount:   " + amount );
         System.out.println("Quantity: " + quantity );
+
         System.out.println("------------------------------------------------------");
         System.out.println("                      PAYMENT                         ");
         System.out.println("------------------------------------------------------");
@@ -68,8 +72,6 @@ public class Cashier
         switch(mop) {
             case 1:
                 System.out.println("------------------------------------------------------");
-                double cash;
-                double change;
                 do {
                     System.out.print("Enter cash: ");
                     cash = sc.nextDouble();
@@ -77,6 +79,7 @@ public class Cashier
                 } while(cash < totalAmount);
                 System.out.println("------------------------------------------------------");
                 System.out.println("Total Amount: " + totalAmount);
+                change = (Math.round(change * 100.0)/100.0);
                 System.out.println("Change: " + change);
 
                 break;
@@ -94,6 +97,7 @@ public class Cashier
                 System.out.println("Payment Successfully!");
                 System.out.println("------------------------------------------------------");
                 System.out.println("Total Amount: " + totalAmount);
+
                 break;
         }
 
@@ -125,10 +129,9 @@ public class Cashier
 
     public static void displayInvoice(Invoice invoice)
     {
-        System.out.println("Item \t\t\t\t Price\tQty"
-                + "\t\tTotal");
-        System.out.println("---- \t\t\t\t -----\t---"
-                + "\t\t-----");
+        System.out.println("======================================================");
+        System.out.println("Item \t\t\t\t Price\tQty\t\tTotal");
+        System.out.println("------------------------------------------------------");
         for (LineItem lineItem : invoice.getLineItems())
         {
             Menu menu = lineItem.getMenu();
@@ -139,8 +142,9 @@ public class Cashier
                     , lineItem.getQuantity()
                     , lineItem.getTotalFormatted()));
         }
-
-        System.out.println("\n\t\t\t\t\tInvoice Total: \t"
-                + totalAmount+ "\n");
+        System.out.println("------------------------------------------------------");
+        System.out.println("\n\t\t\t\t\tInvoice Total: \tPhp " +totalAmount);
+        System.out.println("\n\t\t\t\t\tCash tendered: \tPhp " +cash);
+        System.out.println("\t\t\t\t\tChange:        \tPhp " +change);
     }
 }
