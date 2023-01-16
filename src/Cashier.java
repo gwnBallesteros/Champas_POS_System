@@ -1,5 +1,3 @@
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -54,16 +52,15 @@ public class Cashier
         System.out.println("                               [2] Senior Citizen                             ");
         System.out.println("------------------------------------------------------------------------------");
         int discountType = Console.getInt("    Enter discount type: ",1, 2);
-        switch(discountType)
-        {
-            case 1:
+        switch (discountType) {
+            case 1 -> {
                 totalAmount = invoice.getTotal() - (0.20 * invoice.getTotal());
                 System.out.println("                        PWD Discount applied! ");
-                break;
-            case 2:
-                totalAmount = invoice.getTotal() - (0.25 * invoice.getTotal());
+            }
+            case 2 -> {
+                totalAmount = invoice.getTotal() - (0.20 * invoice.getTotal());
                 System.out.println("                      Senior Citizen Discount applied! ");
-                break;
+            }
         }
     }
 
@@ -73,14 +70,10 @@ public class Cashier
         System.out.println("==============================================================================");
         System.out.println("                                  DISCOUNT                                    ");
         System.out.println("==============================================================================");
-        press = Console.getInt("    Discount: (PRESS 1: YES / PRESS 2: NO)");
+        press = Console.getInt("    Discount: (PRESS 1: YES / PRESS 2: NO) ");
 
-        switch(press)
-        {
-            case 1:
-
-                Cashier.discount(invoice);
-                break;
+        switch (press) {
+            case 1 -> Cashier.discount(invoice);
         }
 
         System.out.println("==============================================================================");
@@ -139,7 +132,7 @@ public class Cashier
                     String cardNumber = sc.next();
 
                     cardValid = CreditCardValidator.validateCreditCardNumber(cardNumber);
-                } while (cardValid == false);
+                } while (!cardValid);
 
                 System.out.println("                              Payment Successfully!");
                 System.out.println("------------------------------------------------------------------------------");
@@ -177,7 +170,7 @@ public class Cashier
     public static void displayInvoiceCash(Invoice invoice)
     {
         LocalDateTime localDate = LocalDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/YYYY h:mm a");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");
         System.out.println("\n\n\n\n\n\n\n");
         System.out.println("======================================================\n");
         System.out.println("                CHAMPAS MEXICAN GRILL                 ");
@@ -211,12 +204,13 @@ public class Cashier
         System.out.println("            Accreditation: 76859494A8837k");
         System.out.println();
         System.out.println("======================================================");
+        System.out.println("\n\n\n\n\n\n\n");
     }
 
     public static void displayInvoiceCC(Invoice invoice)
     {
         LocalDateTime localDate = LocalDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/YYYY h:mm a");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");
         System.out.println("\n\n\n\n\n\n\n");
         System.out.println("======================================================\n");
         System.out.println("                CHAMPAS MEXICAN GRILL                 ");
@@ -252,5 +246,6 @@ public class Cashier
         System.out.println("            Accreditation: 76859494A8837k");
         System.out.println();
         System.out.println("======================================================");
+        System.out.println("\n\n\n\n\n\n\n");
     }
 }

@@ -23,7 +23,7 @@ public class Main {
                     Admin.MenuManager();
                 }
                 case 2 -> {
-                    String choice = "";
+                    String choice;
                     String transChoice;
                     Login.PasswordCashier();
                     Login.loginAlert();

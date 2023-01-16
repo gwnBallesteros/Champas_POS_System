@@ -44,7 +44,6 @@ public class Login
         System.out.println("|                                  CHAMPAS                                   |");
         System.out.println("|                                 POS SYSTEM                                 |");
         System.out.println("|                                                                            |");
-        System.out.println("==============================================================================");
 
     }
 
