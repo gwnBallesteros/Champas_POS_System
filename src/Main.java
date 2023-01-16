@@ -6,8 +6,7 @@ public class Main {
     {
         //LOGIN
         Login.Login();
-        int acctType = Console.getInt("Choose Account: ");
-        System.out.println();
+        int acctType = Console.getInt("    Choose Account: ",1,2);
 
         switch (acctType) {
             case 1 -> {

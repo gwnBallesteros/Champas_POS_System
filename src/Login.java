@@ -11,24 +11,21 @@ public class Login
     public static void Login()
     {
         splash();
-        System.out.println("======================================================");
-        System.out.println("                        LOG-IN                        ");
-        System.out.println("------------------------------------------------------");
-        System.out.println("                      [1] ADMIN                       ");
-        System.out.println("                      [2] CASHIER                     ");
-        System.out.println("------------------------------------------------------");
+        System.out.println("                                    LOG-IN                                    ");
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("                                  [1] ADMIN                                   ");
+        System.out.println("                                  [2] CASHIER                                 ");
+        System.out.println("------------------------------------------------------------------------------");
     }
 
     public static void splash()
     {
-        System.out.println("=====================================================");
-        System.out.println("|                                                    |");
-        System.out.println("|                      CHAMPAS                       |");
-        System.out.println("|                     POS SYSTEM                     |");
-        System.out.println("|                                                    |");
-        System.out.println("======================================================");
-        Splash sp = new Splash();
-        sp.loading();
+        System.out.println("==============================================================================");
+        System.out.println("|                                                                            |");
+        System.out.println("|                                  CHAMPAS                                   |");
+        System.out.println("|                                 POS SYSTEM                                 |");
+        System.out.println("|                                                                            |");
+        System.out.println("==============================================================================");
 
     }
 
@@ -56,7 +53,7 @@ public class Login
         Scanner scanner = new Scanner(System.in);
         String userInput ="";
         do {
-            System.out.print("Enter Password: ");
+            System.out.print("    Enter Password: ");
             userInput = scanner.nextLine();
 
         } while(!Encryptor.encryptString(userInput).equals(hashpass));
@@ -72,7 +69,7 @@ public class Login
         Scanner scanner = new Scanner(System.in);
         String userInput ="";
         do {
-            System.out.print("Enter Password: ");
+            System.out.print("    Enter Password: ");
             userInput = scanner.nextLine();
 
         } while(!Encryptor.encryptString(userInput).equals(hashpass));

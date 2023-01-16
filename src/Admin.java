@@ -201,16 +201,20 @@ public class Admin
 
             ResultSet rs = pst.executeQuery();
 
-            System.out.println("======================================================");
+            System.out.println("==============================================================================");
+            System.out.println("                                    MENU                                      ");
+            System.out.println("------------------------------------------------------------------------------");
+            System.out.printf(String.format("%-9s %-40s %-17s %-8s\n","CODE", "ITEM", "STATUS", "PRICE"));
+            System.out.println("------------------------------------------------------------------------------");
             while(rs.next())
             {
-                System.out.printf(String.format("%-12s %-25s %-40s %-55s\n"
+                System.out.printf(String.format(" %-9s%-40s %-17s %-8s\n"
                         , rs.getString(2)
                         , rs.getString(3)
                         , rs.getString(4)
                         ,rs.getString(5)));
             }
-            System.out.println("======================================================\n");
+            System.out.println("==============================================================================");
             rs.close();
             pst.close();
             con.close();

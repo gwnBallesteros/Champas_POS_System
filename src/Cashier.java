@@ -112,18 +112,21 @@ public class Cashier
 
     public static void getLineItems(Invoice invoice)
     {
+        Admin ad = new Admin();
+        ad.displayData();
         String choice = "y";
         while (choice.equalsIgnoreCase("y"))
         {
-            //System.out.println("======================================================");
-            String menuCode = Console.getString("Enter product code: ");
-            int quantity = Console.getInt("Enter quantity: ");
+            System.out.println("                                    ORDERS                                    ");
+            System.out.println("------------------------------------------------------------------------------");
+            String menuCode = Console.getString("    Enter product code: ");
+            int quantity = Console.getInt("    Enter quantity: ");
 
             Menu menu = MenuDB.getMenu(menuCode);
             invoice.addItem(new LineItem(menu, quantity));
 
-            choice = Console.getString("Another line item? (y/n): ");
-            System.out.println();
+            choice = Console.getString("    Add another order? (y/n): ");
+            System.out.println("------------------------------------------------------------------------------");
         }
     }
 

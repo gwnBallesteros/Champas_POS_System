@@ -39,13 +39,13 @@ public class Console
         while(!isValid)
         {
             i = getInt(prompt);
-            if(i <= min)
+            if(i < min)
             {
-                System.out.println("Error! Select 1 and 2 only");
+                System.out.println("Error! Select 1 and 2 only\n");
             }
-            else if (i >= max)
+            else if (i > max)
             {
-                System.out.print("Error! Select 1 and 2 only ");
+                System.out.print("Error! Select 1 and 2 only\n");
             }
             else
                 isValid = true;
