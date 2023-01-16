@@ -4,13 +4,23 @@ import java.util.Locale;
 public class Menu
 {
     private int menu_id;
+    private int menu_code;
     private String menu_item;
     private String menu_status;
     private double menu_price;
 
+    public int getMenu_code() {
+        return menu_code;
+    }
+
+    public void setMenu_code(int menu_code) {
+        this.menu_code = menu_code;
+    }
+
     public Menu()
     {
         this.menu_id = 0;
+        this.menu_code = 0;
         this.menu_item = "";
         this.menu_status = "";
         this.menu_price = 0.0;

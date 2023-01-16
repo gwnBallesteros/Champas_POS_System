@@ -11,6 +11,7 @@ public class Login
     public static void Login()
     {
         splash();
+        System.out.println("======================================================");
         System.out.println("                        LOG-IN                        ");
         System.out.println("------------------------------------------------------");
         System.out.println("                      [1] ADMIN                       ");
@@ -26,6 +27,8 @@ public class Login
         System.out.println("|                     POS SYSTEM                     |");
         System.out.println("|                                                    |");
         System.out.println("======================================================");
+        Splash sp = new Splash();
+        sp.loading();
 
     }
 

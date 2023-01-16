@@ -13,14 +13,13 @@ public class MenuDB
             Connection con = DBConnect.getConnect();
 
             ResultSet rs;
-            String str = "SELECT menu_item,food_price FROM champas.champas_menu WHERE id=" + menu_code;
+            String str = "SELECT menu_item,food_price FROM champas.champas_menu WHERE code=" + menu_code;
             PreparedStatement pst = con.prepareStatement(str);
 
             rs = pst.executeQuery();
 
             while(rs.next())
             {
-                //System.out.println(rs.getDouble("iprice"));
                 String itemName = rs.getString("menu_item");
                 m.setMenu_item(itemName);
                 double foodPrice = rs.getDouble("food_price");

@@ -62,6 +62,9 @@ public class Admin
     {
         Menu item = new Menu();
 
+        int itemCode = Console.getInt("Enter the item code: ");
+        item.setMenu_code(itemCode);
+
         System.out.print("Enter the item name: ");
         String itemName = sc.nextLine();
         item.setMenu_item(itemName);
@@ -77,12 +80,13 @@ public class Admin
         {
             Connection con = DBConnect.getConnect();
 
-            String sql = "INSERT into champas.champas_menu(menu_item, status, food_price) VALUES(?,?,?)";
+            String sql = "INSERT into champas.champas_menu(code, menu_item, status, food_price) VALUES(?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
 
-            pst.setString(1, item.getMenu_status());
+            pst.setInt(1, item.getMenu_code());
             pst.setString(2, item.getMenu_item());
-            pst.setDouble(3, item.getMenu_price());
+            pst.setString(3, item.getMenu_status());
+            pst.setDouble(4, item.getMenu_price());
 
             int x = pst.executeUpdate();
             pst.close();
@@ -107,13 +111,13 @@ public class Admin
             Connection con = DBConnect.getConnect();
             Menu item = new Menu();
 
-            int id = Console.getInt("Enter the record number to delete: ");
-            item.setMenu_id(id);
+            int code = Console.getInt("Enter the record number to delete: ");
+            item.setMenu_code(code);
 
-            String sql = "DELETE FROM champas_menu WHERE id=? ";
+            String sql = "DELETE FROM champas_menu WHERE code=? ";
             PreparedStatement pst = con.prepareStatement(sql);
 
-            pst.setInt(1, item.getMenu_id());
+            pst.setInt(1, item.getMenu_code());
             int x = pst.executeUpdate();
 
             pst.close();
@@ -139,9 +143,9 @@ public class Admin
     {
         Menu item = new Menu();
 
-        System.out.print("Enter the id: ");
-        int itemId = sc.nextInt();
-        item.setMenu_id(itemId);
+        System.out.print("Enter the code: ");
+        int itemCode = sc.nextInt();
+        item.setMenu_code(itemCode);
 
         System.out.print("Enter the item name: ");
         String itemName = sc.nextLine();
@@ -158,13 +162,13 @@ public class Admin
         try
         {
             Connection con = DBConnect.getConnect();
-            String str = "UPDATE champas.champas_menu SET menu_item=?, status=?, food_price=? WHERE id=?";
+            String str = "UPDATE champas.champas_menu SET menu_item=?, status=?, food_price=? WHERE code=?";
             PreparedStatement pst = con.prepareStatement(str);
 
             pst.setString(1, item.getMenu_status());
             pst.setString(2, item.getMenu_item());
             pst.setDouble(3, item.getMenu_price());
-            pst.setInt(4, item.getMenu_id());
+            pst.setInt(4, item.getMenu_code());
 
             int x = pst.executeUpdate();
 
@@ -201,10 +205,10 @@ public class Admin
             while(rs.next())
             {
                 System.out.printf(String.format("%-12s %-25s %-40s %-55s\n"
-                        ,rs.getString(1)
                         , rs.getString(2)
                         , rs.getString(3)
-                        , rs.getString(4)));
+                        , rs.getString(4)
+                        ,rs.getString(5)));
             }
             System.out.println("======================================================\n");
             rs.close();
