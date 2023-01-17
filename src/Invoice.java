@@ -50,8 +50,6 @@ public class Invoice extends Cashier
     public String getTotalFormatted()
     {
         String s = "Php " + getTotal();
-//        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
-//        return currency.format(getTotal());
         return s;
     }
 }

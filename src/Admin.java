@@ -16,7 +16,7 @@ public class Admin
         {
 
             System.out.println("==============================================================================");
-            System.out.println("                                    MENU                                      ");
+            System.out.println("                                 OPTIONS                                      ");
             System.out.println("------------------------------------------------------------------------------");
             System.out.println("                          [1] Insert Data");
             System.out.println("                          [2] Display the Datas");
@@ -62,7 +62,7 @@ public class Admin
 
 
     // Insertion of Data into the Database Table
-    public static void insertData()
+    private static void insertData()
     {
         Menu item = new Menu();
         System.out.println("==============================================================================");
@@ -107,11 +107,10 @@ public class Admin
         {
             e.printStackTrace();
         }
-        System.out.println("==============================================================================");
     }
 
     //Deletion of Data from the Database Table
-    public void deleteData()
+    private void deleteData()
     {
         try
         {
@@ -145,11 +144,10 @@ public class Admin
         {
             e.printStackTrace();
         }
-        System.out.println("==============================================================================");
     }
 
     //Update Data from the Database Table
-    public static void updateData()
+    private static void updateData()
     {
         Menu item = new Menu();
 
@@ -201,7 +199,6 @@ public class Admin
         {
             e.printStackTrace();
         }
-        System.out.println("==============================================================================");
     }
 
     //Display the Datas from the Database Table
@@ -228,7 +225,7 @@ public class Admin
                         , rs.getString(4)
                         ,rs.getString(5)));
             }
-            System.out.println("==============================================================================");
+            System.out.println("==============================================================================\n\n");
             rs.close();
             pst.close();
             con.close();

@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Cashier
 {
     public static Scanner sc = new Scanner(System.in);
+
     private static double amount = 0.0;
     private static int quantity = 0;
     private static double totalAmount = 0;
@@ -14,6 +15,8 @@ public class Cashier
     private static  double subTotal = 0.0;
     private static String cardLabel;
     private static String cardHolder;
+
+
 
     public static void totalOrders(Invoice invoice)
     {
@@ -34,14 +37,14 @@ public class Cashier
                     , lineItem.getTotalFormatted()));
         }
         System.out.println("==============================================================================");
-        System.out.printf(String.format("%77s","Subtotal:   "+invoice.getTotalFormatted()+"\n"));
-        //System.out.println("\t\t\t\t\tSubtotal: \t" + invoice.getTotalFormatted()+"\n");
+        System.out.printf(String.format("%77s","Subtotal:  "+invoice.getTotalFormatted()+"\n"));
         totalAmount = invoice.getTotal();
         quantity = (int) invoice.getTotalQuantity();
-//        System.out.println("Amount:   " + amount );
         System.out.println("    Quantity: " + quantity );
         System.out.println("==============================================================================");
     }
+
+
 
     private static void discount(Invoice invoice)
     {
@@ -63,6 +66,8 @@ public class Cashier
             }
         }
     }
+
+
 
     public static void paymentInput(Invoice invoice)
     {
@@ -100,8 +105,6 @@ public class Cashier
                 System.out.println("------------------------------------------------------------------------------");
                 do {
                     cash = Console.getDouble("    Enter cash: ");
-//                    System.out.print("    Enter cash: ");
-//                    cash = sc.nextDouble();
                     change = cash - totalAmount;
                 } while(cash < totalAmount);
                 System.out.println("------------------------------------------------------------------------------");
@@ -109,7 +112,7 @@ public class Cashier
                 change = (Math.round(change * 100.0)/100.0);
                 System.out.println("    Change: " + change);
                 System.out.println("------------------------------------------------------------------------------");
-                System.out.print("    Print the receipt: ");
+                System.out.print("    Print the receipt? (y/n) ");
                 String print = sc.next();
 
                 if(print.equalsIgnoreCase("Y"))
@@ -122,6 +125,7 @@ public class Cashier
             case 2:
                 System.out.println("------------------------------------------------------------------------------");
                 boolean cardValid;
+
                 System.out.print("    Enter EMV Card label: ");
                 cardLabel = sc.nextLine();
                 System.out.print("    Enter Card holder: ");
@@ -147,6 +151,8 @@ public class Cashier
         }
     }
 
+
+
     public static void getLineItems(Invoice invoice)
     {
         Admin ad = new Admin();
@@ -167,7 +173,9 @@ public class Cashier
         }
     }
 
-    public static void displayInvoiceCash(Invoice invoice)
+
+
+    private static void displayInvoiceCash(Invoice invoice)
     {
         LocalDateTime localDate = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");
@@ -207,7 +215,9 @@ public class Cashier
         System.out.println("\n\n\n\n\n\n\n");
     }
 
-    public static void displayInvoiceCC(Invoice invoice)
+
+
+    private static void displayInvoiceCC(Invoice invoice)
     {
         LocalDateTime localDate = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");

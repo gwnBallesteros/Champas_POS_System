@@ -11,7 +11,7 @@ public class Login
     public static void Login()
     {
         System.out.println("==============================================================================");
-        System.out.println("                                    LOG-IN                                    ");
+        System.out.println("                                    LOGIN                                    ");
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("                                  [1] ADMIN                                   ");
         System.out.println("                                  [2] CASHIER                                 ");
@@ -20,15 +20,15 @@ public class Login
 
     public static void loginAlert()
     {
-        System.out.println("------------------------------------------------------------------------------");
-        System.out.println("|                           LOGIN SUCCESSFULLY!                              |");
-        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("\n\n------------------------------------------------------------------------------");
+        System.out.println("|                           LOG-IN SUCCESSFULLY!                             |");
+        System.out.println("------------------------------------------------------------------------------\n\n");
     }
     public static void logout()
     {
-        System.out.println("------------------------------------------------------------------------------");
-        System.out.println("|                          LOGOUT SUCCESSFULLY!                              |");
-        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("\n\n------------------------------------------------------------------------------");
+        System.out.println("|                          LOG-OUT SUCCESSFULLY!                             |");
+        System.out.println("------------------------------------------------------------------------------\n\n");
     }
     public static void footer()
     {
@@ -39,11 +39,23 @@ public class Login
 
     public static void splash()
     {
+        int program;
+        Scanner sc = new Scanner(System.in);
         System.out.println("==============================================================================");
         System.out.println("|                                                                            |");
-        System.out.println("|                                  CHAMPAS                                   |");
+        System.out.println("|                            CHAMPAS MEXICAN GRILL                           |");
         System.out.println("|                                 POS SYSTEM                                 |");
         System.out.println("|                                                                            |");
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("                              PRESS 1 TO CONTINUE");
+        System.out.println("                              PRESS 2 TO EXIT");
+        System.out.println("------------------------------------------------------------------------------");
+        program = Console.getInt("                                  >> ",1,2);
+        if(program == 2)
+        {
+            System.out.println("==============================================================================");
+            System.exit(0);
+        }
 
     }
 

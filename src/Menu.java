@@ -59,7 +59,7 @@ public class Menu
 
     public String getPriceFormatted()
     {
-        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
-        return currency.format(getMenu_price());
+        String s = "Php " + getMenu_price();
+        return s;
     }
 }
