@@ -1,3 +1,9 @@
+/****************************************************
+ CONSOLE POS SYSTEM
+ STORE: CHAMPAS MEXICAN GRILL
+ VERSION 1.0.0: 01/17/2023
+*****************************************************/
+
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
@@ -7,7 +13,9 @@ public class Main {
 
     public static void main(String[] args) throws NoSuchAlgorithmException
     {
-        //LOGIN
+        /**
+         * SPLASH
+         */
         Login.splash();
         String login;
 
@@ -16,13 +24,20 @@ public class Main {
             Login.Login();
             int acctType = Console.getInt("    Choose Account: ",1,2);
 
-            switch (acctType) {
+            switch (acctType)
+            {
+                /**
+                 * ADMIN
+                 */
                 case 1 -> {
                     Login.PasswordAdmin();
                     Login.loginAlert();
                     Admin.MenuManager();
                 }
 
+                /**
+                 * CASHIER
+                 */
                 case 2 -> {
                     String choice;
                     String transChoice;
@@ -46,6 +61,7 @@ public class Main {
                     Login.logout();
                 }
             }
+
             System.out.print("    Log-in Again? (y/n) ");
             login = sc.next();
         } while(login.equalsIgnoreCase("Y"));
