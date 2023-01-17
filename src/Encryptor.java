@@ -3,8 +3,10 @@ import com.mysql.cj.protocol.Message;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
 
+/**
+ * Luhn's Algorithm
+ */
 public class Encryptor
 {
     public static String encryptString(String input) throws NoSuchAlgorithmException

@@ -2,6 +2,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * Query to select an item from database to store into the LineItem list
+ */
+
 public class MenuDB
 {
     public static Menu getMenu(int menu_code)

@@ -1,5 +1,6 @@
-import java.text.NumberFormat;
-import java.util.Locale;
+/**
+ * Constructors for the LineItem
+ */
 
 public class LineItem
 {

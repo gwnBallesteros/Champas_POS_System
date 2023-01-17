@@ -2,10 +2,17 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ * Class for the Cashier Section
+ */
+
 public class Cashier
 {
     public static Scanner sc = new Scanner(System.in);
 
+    /**
+     *Variables
+     */
     private static double amount = 0.0;
     private static int quantity = 0;
     private static double totalAmount = 0;
@@ -17,7 +24,9 @@ public class Cashier
     private static String cardHolder;
 
 
-
+    /**
+     * Function for the Total Orders
+     */
     public static void totalOrders(Invoice invoice)
     {
         //Cashier.getLineItems(invoice);
@@ -45,7 +54,9 @@ public class Cashier
     }
 
 
-
+    /**
+     * Function for the Discount
+     */
     private static void discount(Invoice invoice)
     {
         System.out.println("------------------------------------------------------------------------------");
@@ -68,7 +79,9 @@ public class Cashier
     }
 
 
-
+    /**
+     * Function for the Payment Section
+     */
     public static void paymentInput(Invoice invoice)
     {
         int press;
@@ -152,7 +165,9 @@ public class Cashier
     }
 
 
-
+    /**
+     * Function for getting the orders
+     */
     public static void getLineItems(Invoice invoice)
     {
         Admin ad = new Admin();
@@ -174,7 +189,9 @@ public class Cashier
     }
 
 
-
+    /**
+     * Invoice for the Cash Payment
+     */
     private static void displayInvoiceCash(Invoice invoice)
     {
         LocalDateTime localDate = LocalDateTime.now();
@@ -216,7 +233,9 @@ public class Cashier
     }
 
 
-
+    /**
+     * Invoice for the Credit/Debit Card Payment
+     */
     private static void displayInvoiceCC(Invoice invoice)
     {
         LocalDateTime localDate = LocalDateTime.now();

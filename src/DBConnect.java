@@ -1,6 +1,9 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Connector to the MySql Database
+ */
 public class DBConnect
 {
     public static Connection getConnect()

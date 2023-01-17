@@ -1,8 +1,12 @@
+/**
+ * MD5 Hashing
+ * Algorithm use to validate for card numbers including bank
+ */
+
 public class CreditCardValidator
 {
     public static boolean validateCreditCardNumber(String input)
     {
-        //        String input = "5531006517734657";
         //Convert input to int
         int[] creditCardInt = new int[input.length()];
 

@@ -1,13 +1,18 @@
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Scanner;
+
+/**
+ * This is for Login essentials including the password and the Luhn's Algorithm
+ */
 
 public class Login
 {
+
+    /**
+     * UI Console
+     */
     public static void Login()
     {
         System.out.println("==============================================================================");
@@ -59,20 +64,9 @@ public class Login
 
     }
 
-    public static String encryptString(String input) throws NoSuchAlgorithmException
-    {
-        //MessageDigest works with MD2, MD5, SHA-1, SHA-224, SHA-256
-        //SHA-384, SHA-512
-
-        MessageDigest md = MessageDigest.getInstance("MD5");
-
-        byte[] messageDigest = md.digest(input.getBytes());
-
-        BigInteger bigInt = new BigInteger(1, messageDigest);
-
-        return bigInt.toString(16);
-    }
-
+    /**
+     * Password section implementing the Luhn's Algorithm
+     */
     public static void PasswordAdmin() throws NoSuchAlgorithmException
     {
         Encryptor encryptor = new Encryptor();

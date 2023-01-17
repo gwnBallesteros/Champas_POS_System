@@ -3,6 +3,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
+/**
+ * Class for the Admin Section
+ */
+
 public class Admin
 {
     public static Scanner sc = new Scanner(System.in);

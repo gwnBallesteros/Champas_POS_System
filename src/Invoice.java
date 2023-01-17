@@ -1,8 +1,9 @@
-import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Locale;
+
+/**
+ * Storing elements/orders to the LineItem List
+ */
 
 public class Invoice extends Cashier
 {

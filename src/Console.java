@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+/**
+ * Input Validators
+ */
+
 public class Console
 {
     private static Scanner sc = new Scanner(System.in);
