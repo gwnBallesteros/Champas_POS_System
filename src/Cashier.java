@@ -13,7 +13,6 @@ public class Cashier
     /**
      *Variables
      */
-    private static double amount = 0.0;
     private static int quantity = 0;
     private static double totalAmount = 0;
     private static double change = 0.0;
@@ -29,7 +28,6 @@ public class Cashier
      */
     public static void totalOrders(Invoice invoice)
     {
-        //Cashier.getLineItems(invoice);
         System.out.println("==============================================================================");
         System.out.println("                               TOTAL ORDERS                                   ");
         System.out.println("------------------------------------------------------------------------------");
@@ -51,31 +49,6 @@ public class Cashier
         quantity = (int) invoice.getTotalQuantity();
         System.out.println("    Quantity: " + quantity );
         System.out.println("==============================================================================");
-    }
-
-
-    /**
-     * Function for the Discount
-     */
-    private static void discount(Invoice invoice)
-    {
-        System.out.println("------------------------------------------------------------------------------");
-        System.out.println("                                Discount Type                                 ");
-        System.out.println("------------------------------------------------------------------------------");
-        System.out.println("                               [1] PWD                                        ");
-        System.out.println("                               [2] Senior Citizen                             ");
-        System.out.println("------------------------------------------------------------------------------");
-        int discountType = Console.getInt("    Enter discount type: ",1, 2);
-        switch (discountType) {
-            case 1 -> {
-                totalAmount = invoice.getTotal() - (0.20 * invoice.getTotal());
-                System.out.println("                        PWD Discount applied! ");
-            }
-            case 2 -> {
-                totalAmount = invoice.getTotal() - (0.20 * invoice.getTotal());
-                System.out.println("                      Senior Citizen Discount applied! ");
-            }
-        }
     }
 
 
@@ -115,53 +88,93 @@ public class Cashier
 
         switch(mop) {
             case 1:
-                System.out.println("------------------------------------------------------------------------------");
-                do {
-                    cash = Console.getDouble("    Enter cash: ");
-                    change = cash - totalAmount;
-                } while(cash < totalAmount);
-                System.out.println("------------------------------------------------------------------------------");
-                System.out.println("    Total Amount: " + totalAmount);
-                change = (Math.round(change * 100.0)/100.0);
-                System.out.println("    Change: " + change);
-                System.out.println("------------------------------------------------------------------------------");
-                System.out.print("    Print the receipt? (y/n) ");
-                String print = sc.next();
-
-                if(print.equalsIgnoreCase("Y"))
-                {
-                    Cashier.displayInvoiceCash(invoice);
-                }
-                System.out.println("------------------------------------------------------------------------------");
+                cashPayment(invoice);
                 break;
 
             case 2:
-                System.out.println("------------------------------------------------------------------------------");
-                boolean cardValid;
-
-                System.out.print("    Enter EMV Card label: ");
-                cardLabel = sc.nextLine();
-                System.out.print("    Enter Card holder: ");
-                cardHolder = sc.nextLine();
-
-                do {
-                    System.out.print("    Enter Card number: ");
-                    String cardNumber = sc.next();
-
-                    cardValid = CreditCardValidator.validateCreditCardNumber(cardNumber);
-                } while (!cardValid);
-
-                System.out.println("                              Payment Successfully!");
-                System.out.println("------------------------------------------------------------------------------");
-                System.out.println("    Total Amount: " + totalAmount);
-                String printCC = Console.getString("    Print the receipt: (y/n) ");
-                if(printCC.equalsIgnoreCase("Y"))
-                {
-                    Cashier.displayInvoiceCC(invoice);
-                }
-                System.out.println("------------------------------------------------------------------------------");
+                cardPayment(invoice);
                 break;
         }
+    }
+
+
+    /**
+     * Function for the Discount
+     */
+    private static void discount(Invoice invoice)
+    {
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("                                Discount Type                                 ");
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("                               [1] PWD                                        ");
+        System.out.println("                               [2] Senior Citizen                             ");
+        System.out.println("------------------------------------------------------------------------------");
+        int discountType = Console.getInt("    Enter discount type: ",1, 2);
+        switch (discountType) {
+            case 1 -> {
+                totalAmount = invoice.getTotal() - (0.20 * invoice.getTotal());
+                System.out.println("                        PWD Discount Applied! ");
+            }
+            case 2 -> {
+                totalAmount = invoice.getTotal() - (0.20 * invoice.getTotal());
+                System.out.println("                      Senior Citizen Discount Applied! ");
+            }
+        }
+    }
+
+
+    /**
+     * Function for Cash Payment
+     */
+    private static void cashPayment(Invoice invoice)
+    {
+        System.out.println("------------------------------------------------------------------------------");
+        do {
+            cash = Console.getDouble("    Enter cash: ");
+            change = cash - totalAmount;
+        } while(cash < totalAmount);
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("    Total Amount: " + totalAmount);
+        change = (Math.round(change * 100.0)/100.0);
+        System.out.println("    Change: " + change);
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.print("    Print the receipt? (y/n) ");
+        String print = sc.next();
+
+        if(print.equalsIgnoreCase("Y"))
+        {
+            Cashier.displayInvoiceCash(invoice);
+        }
+        System.out.println("------------------------------------------------------------------------------");
+    }
+
+
+    /**
+     * Function for Card Payment
+     */
+    private static void cardPayment(Invoice invoice)
+    {
+        boolean cardValid;
+        System.out.println("------------------------------------------------------------------------------");
+        cardLabel = Console.getString("    Enter EMV Card Label: ");
+        cardHolder = Console.getString("    Enter Card Holder: ");
+
+        do {
+            System.out.print("    Enter Card number: ");
+            String cardNumber = sc.next();
+
+            cardValid = CreditCardValidator.validateCreditCardNumber(cardNumber);
+        } while (!cardValid);
+
+        System.out.println("                              Payment Successfully!");
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("    Total Amount: " + totalAmount);
+        String printCC = Console.getString("    Print the receipt: (y/n) ");
+        if(printCC.equalsIgnoreCase("Y"))
+        {
+            Cashier.displayInvoiceCC(invoice);
+        }
+        System.out.println("------------------------------------------------------------------------------");
     }
 
 
@@ -204,24 +217,24 @@ public class Cashier
         System.out.println("                    0998 530 9128                    \n");
         System.out.println("           Trans. Date: " + dtf.format(localDate)+"\n");
         System.out.println("------------------------------------------------------");
-        System.out.printf(String.format("%-20s %-8s %-5s %-5s\n","Item", "Price", "Qty", "Total"));
+        System.out.printf(String.format("%-20s %-12s %-7s %-6s\n","Item", "Price", "Qty", "Total"));
         System.out.println("------------------------------------------------------");
         for (LineItem lineItem : invoice.getLineItems())
         {
             Menu menu = lineItem.getMenu();
 
-            System.out.printf(String.format("%-20s %-8s %-5s %-5s\n"
+            System.out.printf(String.format("%-20s %-12s  %-7s%-6s\n"
                     , menu.getMenu_item()
                     , menu.getPriceFormatted()
                     , lineItem.getQuantity()
                     , lineItem.getTotalFormatted()));
         }
         System.out.println("------------------------------------------------------");
-        System.out.println("\t\t\t\t\tSubtotal:      \tPhp " +subTotal);
-        System.out.println("\t\t\t\t\tVAT (12%):     \tPhp " +tax);
-        System.out.println("\t\t\t\t\tTotal Amount:  \tPhp " +totalAmount);
-        System.out.println("\t\t\t\t\tCash tendered: \tPhp " +cash);
-        System.out.println("\t\t\t\t\tChange:        \tPhp " +change);
+        System.out.println("\t\t\t\t\t\tSubtotal:      \tPhp " +subTotal);
+        System.out.println("\t\t\t\t\t\tVAT (12%):     \tPhp " +tax);
+        System.out.println("\t\t\t\t\t\tTotal Amount:  \tPhp " +totalAmount);
+        System.out.println("\t\t\t\t\t\tCash tendered: \tPhp " +cash);
+        System.out.println("\t\t\t\t\t\tChange:        \tPhp " +change);
         System.out.println("\n\n");
         System.out.println("                THANK YOU FOR VISITING!");
         System.out.println("        Gwn Software Labs Inc., 67 Boston Square");

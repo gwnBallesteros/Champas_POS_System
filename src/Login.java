@@ -65,7 +65,7 @@ public class Login
     }
 
     /**
-     * Password section implementing the Luhn's Algorithm
+     * Password section implementing the MD5 Hashing
      */
     public static void PasswordAdmin() throws NoSuchAlgorithmException
     {

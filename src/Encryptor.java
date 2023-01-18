@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Luhn's Algorithm
+ * MD5 Hashing
  */
 public class Encryptor
 {

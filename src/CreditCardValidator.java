@@ -1,5 +1,5 @@
 /**
- * MD5 Hashing
+ * Luhn's Algorithm
  * Algorithm use to validate for card numbers including bank
  */
 
