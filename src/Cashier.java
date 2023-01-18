@@ -63,8 +63,8 @@ public class Cashier
         System.out.println("==============================================================================");
         press = Console.getInt("    Discount: (PRESS 1: YES / PRESS 2: NO) ");
 
-        switch (press) {
-            case 1 -> Cashier.discount(invoice);
+        if (press == 1) {
+            Cashier.discount(invoice);
         }
 
         System.out.println("==============================================================================");
@@ -86,14 +86,9 @@ public class Cashier
         System.out.println("------------------------------------------------------------------------------");
         int mop = Console.getInt("    Enter MOP: ",1,2);
 
-        switch(mop) {
-            case 1:
-                cashPayment(invoice);
-                break;
-
-            case 2:
-                cardPayment(invoice);
-                break;
+        switch (mop) {
+            case 1 -> cashPayment(invoice);
+            case 2 -> cardPayment(invoice);
         }
     }
 

@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
@@ -75,7 +73,7 @@ public class Login
         String hashpass = "3f7caa3d471688b704b73e9a77b1107f";
 
         Scanner scanner = new Scanner(System.in);
-        String userInput ="";
+        String userInput;
         do {
             System.out.print("    Enter Password: ");
             userInput = scanner.nextLine();
@@ -91,7 +89,7 @@ public class Login
         String hashpass = "2346a4255d4d51750c5d52693356acf3";
 
         Scanner scanner = new Scanner(System.in);
-        String userInput ="";
+        String userInput;
         do {
             System.out.print("    Enter Password: ");
             userInput = scanner.nextLine();

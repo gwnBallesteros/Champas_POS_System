@@ -33,32 +33,14 @@ public class Admin
             ch = sc.nextInt();
             sc.nextLine();
 
-
-            switch(ch)
-            {
-                case 1:
-                    di.insertData();
-
-                    break;
-
-                case 2:
-                    di.displayData();
-                    break;
-
-                case 3:
-                    di.updateData();
-                    break;
-
-                case 4:
-                    di.deleteData();
-                    break;
-
-                case 5:
-                    Login.logout();
-                    break;
-
-                default:
-                    break;
+            switch (ch) {
+                case 1 -> di.insertData();
+                case 2 -> di.displayData();
+                case 3 -> di.updateData();
+                case 4 -> di.deleteData();
+                case 5 -> Login.logout();
+                default -> {
+                }
             }
         }
         while(ch!= 5);
