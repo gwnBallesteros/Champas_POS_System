@@ -11,6 +11,9 @@ public class Main {
 
     public static Scanner sc = new Scanner(System.in);
 
+    /**
+     * Main Function
+     */
     public static void main(String[] args) throws NoSuchAlgorithmException
     {
         Login.splash();
