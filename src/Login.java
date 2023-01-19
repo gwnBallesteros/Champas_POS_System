@@ -69,7 +69,6 @@ public class Login
     {
         Encryptor encryptor = new Encryptor();
 
-        //String password = "ADMIN123";
         String hashpass = "3f7caa3d471688b704b73e9a77b1107f";
 
         Scanner scanner = new Scanner(System.in);

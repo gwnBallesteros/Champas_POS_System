@@ -140,8 +140,7 @@ public class Admin
         System.out.println("==============================================================================");
         System.out.println("                               UPDATE DATA                                    ");
         System.out.println("------------------------------------------------------------------------------");
-        System.out.print("    Enter the code: ");
-        int itemCode = sc.nextInt();
+        int itemCode = Console.getInt("    Enter the code: ");
         item.setMenu_code(itemCode);
 
         System.out.print("    Enter the item name: ");
@@ -162,8 +161,8 @@ public class Admin
             String str = "UPDATE champas.champas_menu SET menu_item=?, status=?, food_price=? WHERE code=?";
             PreparedStatement pst = con.prepareStatement(str);
 
-            pst.setString(1, item.getMenu_status());
-            pst.setString(2, item.getMenu_item());
+            pst.setString(1, item.getMenu_item());
+            pst.setString(2, item.getMenu_status());
             pst.setDouble(3, item.getMenu_price());
             pst.setInt(4, item.getMenu_code());
 
@@ -199,9 +198,9 @@ public class Admin
             ResultSet rs = pst.executeQuery();
 
             System.out.println("==============================================================================");
-            System.out.println("                                    MENU                                      ");
+            System.out.println("                                   MENU                                       ");
             System.out.println("------------------------------------------------------------------------------");
-            System.out.printf(String.format("%-9s %-40s %-17s %-8s\n","CODE", "ITEM", "STATUS", "PRICE"));
+            System.out.printf(String.format(" %-9s%-40s %-17s %-8s\n","CODE", "ITEM", "STATUS", "PRICE"));
             System.out.println("------------------------------------------------------------------------------");
             while(rs.next())
             {
