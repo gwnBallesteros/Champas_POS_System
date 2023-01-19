@@ -49,8 +49,6 @@ public class LineItem
     public String getTotalFormatted()
     {
         String s = "Php " + getTotal();
-//        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
-//        return currency.format(this.getTotal());
         return s;
     }
 }

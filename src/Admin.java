@@ -86,7 +86,7 @@ public class Admin
 
             if(x==1)
             {
-                System.out.println("Record Inserted Succesfully!");
+                System.out.println("                        Data Inserted Successfully! ");
             }
         }
         catch(Exception e)
@@ -119,11 +119,11 @@ public class Admin
             con.close();
             if(x==1)
             {
-                System.out.println("Record Deleted Succesfully!");
+                System.out.println("                        Data Deleted Successfully! ");
             }
             else
             {
-                System.out.println("Record Not Found!");
+                System.out.println("                        Data Not Found! ");
             }
         }
         catch(Exception e)
@@ -173,11 +173,11 @@ public class Admin
 
             if(x==1)
             {
-                System.out.println("Update Done!");
+                System.out.println("                        Update Done! ");
             }
             else
             {
-                System.out.println("Record not Found!");
+                System.out.println("                        Data Not Found! ");
             }
         }
         catch(Exception e)
