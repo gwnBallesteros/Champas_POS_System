@@ -13,7 +13,7 @@ public class DBConnect
         try
         {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/champas", "root", "THELASTSAMURAIch5@");
+            con = DriverManager.getConnection("url", "user", "password");
 
             return con;
         }

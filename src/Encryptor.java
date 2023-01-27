@@ -22,5 +22,4 @@ public class Encryptor
 
         return bigInt.toString(16);
     }
-
 }
